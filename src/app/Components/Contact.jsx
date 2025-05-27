@@ -1,44 +1,48 @@
 "use client";
 
 import { useState } from "react";
-import ContactImage from "../assets/images/contact.svg";
 import { FaUserAlt, FaEnvelope, FaSpinner, FaPaperPlane } from 'react-icons/fa';
-import emailjs from '@emailjs/browser';
-
 
 const Contact = () => {
-    const [formData, setFormData] = useState({ name: '', email: '', message: '' });
-    const [status, setStatus] = useState('');
-    const [isError, setIsError] = useState(false);
-    const [loading, setLoading] = useState(false);
+    const [email, setEmail] = useState("");
+    const [name, setName] = useState("");
+    const [message, setMessage] = useState("");
+    const [status, setStatus] = useState("");
+    const [date, setDate] = useState("");
 
-    const handleChange = (e) => {
-        setFormData((prev) => ({
-            ...prev,
-            [e.target.id]: e.target.value,
-        }));
+    const sendEmail = async (e) => {
+        e.preventDefault();
+        setStatus("Sending...");
+
+        const currentDate = new Date().toLocaleString("en-US", {
+            weekday: "long",
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+            hour: "2-digit",
+            minute: "2-digit",
+        });
+        setDate(currentDate);
+
+        try {
+            const response = await fetch("/api/send", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ to: email, name,  message }),
+            });
+
+            if (response.ok) {
+                setStatus("Email sent successfully!");
+            } else {
+                const errorData = await response.json();
+                setStatus(`Failed to send email: ${errorData.error}`);
+            }
+        } catch (error) {
+            setStatus(`An error occurred: ${error.message}`);
+        }
     };
-
-   const sendEmail = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setStatus("Sending...");
-    setIsError(false);
-
-    emailjs.send(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-        formData,
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
-    ).then(() => {
-        setStatus('✅ Message sent successfully!');
-        setFormData({ name: '', email: '', message: '' });
-    }).catch((err) => {
-        setStatus(`❌ Failed to send: ${err.text || err.message}`);
-        setIsError(true);
-    }).finally(() => setLoading(false));
-};
-
 
     return (
         <div id='contact' className="bg-black text-white py-10 w-full px-5 sm:px-20 md:px-32">
@@ -48,9 +52,10 @@ const Contact = () => {
             <div className="flex items-center justify-between">
                 <div className="hidden md:block w-1/2 pl-8">
                     <img
-                        src={ContactImage}
+                        src="/contact.svg"
                         alt="Contact Illustration"
                         className="w-full h-auto rounded-lg"
+                       
                     />
                 </div>
                 <div className="w-full md:w-1/2">
@@ -64,13 +69,15 @@ const Contact = () => {
                                     id="name"
                                     name="name"
                                     placeholder="Your Name"
-                                    value={formData.name}
+                                    value={name}
+                                    onChange={(e) => setName(e.target.value)}
                                     required
-                                    onChange={handleChange}
+
                                     className="bg-transparent font-serif text-white w-full outline-none"
                                 />
                             </div>
                         </div>
+
                         <div className="mb-4">
                             <label htmlFor="email" className="block font-serif text-lg mb-2">Email</label>
                             <div className="flex items-center border border-gray-500 p-2 rounded-lg">
@@ -81,12 +88,13 @@ const Contact = () => {
                                     name="email"
                                     placeholder="Your Email"
                                     required
-                                    value={formData.email}
-                                    onChange={handleChange}
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
                                     className="bg-transparent font-serif text-white w-full outline-none"
                                 />
                             </div>
                         </div>
+
                         <div className="mb-4">
                             <label htmlFor="message" className="block font-serif text-lg mb-2">Message</label>
                             <div className="flex items-start border border-gray-500 p-2 rounded-lg">
@@ -97,31 +105,28 @@ const Contact = () => {
                                     placeholder="Your Message"
                                     rows="4"
                                     required
-                                    value={formData.message}
-                                    onChange={handleChange}
+                                    value={message}
+                                    onChange={(e) => setMessage(e.target.value)}
                                     className="bg-transparent font-serif text-white w-full outline-none resize-none"
                                 />
                             </div>
                         </div>
-                        <button
-                            disabled={loading}
-                            type="submit"
-                            className="bg-cyan-300 hover:bg-cyan-600 text-black py-2 px-6 font-serif rounded-lg flex items-center w-full justify-center text-center"
-                            data-aos="zoom-out"
-                            data-aos-delay="400"
-                        >
-                            {loading ? (
-                                <>
-                                    <FaSpinner className="animate-spin mr-2" /> Sending...
-                                </>
-                            ) : (
-                                <>
-                                    <FaPaperPlane className="mr-2" /> Send Message
-                                </>
-                            )}
-                        </button>
 
-                        {status && <p className="text-sm mt-2">{status}</p>}
+                        <button
+                            type="submit"
+                            className="w-full py-3 bg-cyan-300 hover:bg-cyan-600 text-black font-serif rounded-lg shadow-md  focus:outline-none focus:ring-2 focus:ring-cyan-500"
+                        >
+                            Send Email
+                        </button>
+                        {status && (
+                            <p
+                                className={`text-sm text-center mt-4 ${status.includes("successfully") ? "text-green-600" : "text-red-600"
+                                    }`}
+                            >
+                                {status}
+                            </p>
+                        )}
+                        {date && <p className="text-sm text-center text-gray-500">Sent on: {date}</p>}
                     </form>
 
                 </div>

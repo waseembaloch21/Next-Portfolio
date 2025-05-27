@@ -1,6 +1,8 @@
+"use client";
+
 import React, { useEffect, useRef, useState } from 'react';
 import AOS from 'aos';
-import MyLogo from '../assets/images/Logo.jpeg';
+import Image from 'next/image';
 import { TiSocialLinkedin } from "react-icons/ti";
 import { FaTwitter } from "react-icons/fa";
 import { ImGithub } from "react-icons/im";
@@ -12,7 +14,7 @@ import { SiCss3 } from 'react-icons/si';
 import { FaFigma } from 'react-icons/fa';
 import { SiBootstrap } from 'react-icons/si';
 import { FaGit } from 'react-icons/fa';
-import resume from '../assets/images/Waseem resume.pdf';
+
 import Typed from 'typed.js';
 
 const Hero = () => {
@@ -20,7 +22,7 @@ const Hero = () => {
     const typedElementRef = useRef(null);
 
     useEffect(() => {
-         AOS.init({ duration: 1000, once: true });
+        AOS.init({ duration: 1000, once: true });
         const typed = new Typed(typedElementRef.current, {
             strings: ["FrontEnd Developer", "Web Developer", "Responsive Designer",],
             typeSpeed: 50,
@@ -39,7 +41,7 @@ const Hero = () => {
                 <h1 className='text-3xl md:text-5xl font-serif font-bold mb-2 md:mb-4'>Hy!I AM</h1>
                 <span className='sm:text-5xl text-cyan-300 font-bold font-serif md:text-5xl'>Waseem Baloch</span><br />
 
-                <h1 className='font-serif text-3xl'>Passionate</h1><span ref={typedElementRef} className='sm:text-4xl text-cyan-300 font-serif md:text-5xl font-semibold'></span>
+                <h1 className='font-serif text-3xl'>Passionate</h1><span ref={typedElementRef} className='sm:text-4xl text-cyan-300 font-serif md:text-4xl font-semibold'></span>
                 <p className='text-gray-400 font-serif leading-7 mb-6'>I design a beautiful, responsive, and user-friendly web interfaces with modern frontend technologies.</p>
                 <button
                     onClick={() => setIsModalOpen(true)}
@@ -47,7 +49,7 @@ const Hero = () => {
                 >
                     About Me
                 </button>
-                <a href={resume} download>
+                <a href="Waseem resume.pdf" download>
                     <button
                         className="cv"
                     >
@@ -56,9 +58,15 @@ const Hero = () => {
                 </a>
             </div>
 
-
-            <img className="w-60 h-60 rounded-full border-4 border-cyan-300 shadow-lg"  data-aos="fade-up" src={MyLogo} alt="Developer" />
-
+             <div className="relative w-[220px] sm:w-[280px] md:w-[340px] lg:w-[380px] xl:w-[420px] aspect-square rounded-full border-4  border-cyan-400 overflow-hidden animate-float transition-transform duration-500"    data-aos="fade-up">
+            <Image
+              src="/Logo.jpeg"
+              alt="Waseem Baloch"
+              fill
+              priority
+              className="object-cover"
+            />
+          </div>
             <div className="flex flex-row md:flex-col items-center gap-5 text-gray-400">
                 <a href="https://www.linkedin.com/in/waseem-rauf-6076172b5/">
                     <TiSocialLinkedin />
@@ -105,7 +113,7 @@ const Hero = () => {
                                 <div className="flex-1 flex justify-center items-center">
                                     <img
                                         className=" hidden sm:block w-60 h-60 rounded-full border-4 border-cyan-300 shadow-lg"
-                                        src={MyLogo}
+                                        src="/Logo.jpeg"
                                         alt="Waseem Baloch"
                                     />
                                 </div>

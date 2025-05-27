@@ -1,5 +1,7 @@
+"use client";
+
 import React, { useState } from 'react';
-import MyLogo from '../assets/images/Logo2.jpg';
+import Image from 'next/image';
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -9,12 +11,16 @@ const Navbar = () => {
     return (
         <div className='flex justify-between items-center px-5 py-3 shadow-md'>
             <a href="#home" className='flex items-center gap-3'>
-                <img
-                    className='rounded-full w-14 md:w-16 border-2 border-cyan-300'
-                    src={MyLogo}
-                    alt="Waseem Baloch Logo"
-                    aria-label="Waseem Baloch Logo"
-                />
+<div className='relative rounded-full w-14 md:w-16 h-14 md:h-16 border-2 border-cyan-300 overflow-hidden'>
+                            <Image
+                              src="/Logo2.jpg"
+                              alt="Waseem Baloch"
+                              fill
+                              priority
+                              className="object-cover"
+                            />
+                          </div>
+            
                 <span className='font-serif text-lg md:text-xl font-semibold '>Waseem Baloch</span>
             </a>
 

@@ -1,15 +1,17 @@
+"use client";
 
 import { useState, useEffect } from 'react';
-import HTML from "../assets/images/html.png";
-import Css from "../assets/images/Css.png";
-import Javascript from "../assets/images/Javascript.png";
-import ReactJs from "../assets/images/React.png";
-import NextJs from "../assets/images/nextjs.png";
-import ExpressJS from "../assets/images/express.png";
-import Mongodb from "../assets/images/mongodb.png";
-import Bootstrap from "../assets/images/bootstrap.png";
-import TailwindCss from "../assets/images/tailwind.png";
-import Clanguage from "../assets/images/C.png";
+import Image from 'next/image';
+import HTML from "../../../public/html.png";
+import Css from "../../../public/Css.png";
+import Javascript from "../../../public/Javascript.png";
+import ReactJs from "../../../public/React.png";
+import NextJs from "../../../public/nextjs.png";
+import ExpressJS from "../../../public/express.png";
+import Mongodb from "../../../public/mongodb.png";
+import Bootstrap from "../../../public/bootstrap.png";
+import TailwindCss from "../../../public/tailwind.png";
+import Clanguage from "../../../public/C.png";
 
 const skills = [
   { title: "HTML5", image: HTML },
@@ -48,7 +50,7 @@ const skills = [
                data-aos="fade-up"
               data-aos-delay={ind * 100}
               className=" bg-gray-800 rounded-lg shadow-lg transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl card">
-              <img src={skill.image} alt={skill.title} />
+              <Image src={skill.image} alt={skill.title} />
               <h1>{skill.title}</h1>
             </div>
           );

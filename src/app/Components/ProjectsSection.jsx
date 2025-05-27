@@ -1,10 +1,13 @@
+"use client";
+
 import { useEffect } from 'react';
+import Image from "next/image";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import EventsApp from "../assets/images/Events-app.jpg";
-import Furniture from "../assets/images/Furniture.avif";
+import EventsApp from "../../../public/Events-app.jpg";
+import Furniture from "../../../public/Furniture1.png";
 // import TodoApp from "../assets/images/Todo-app.jpeg";
-import WeatherApp from "../assets/images/Weather-App.avif";
+import WeatherApp from "../../../public/Weather1.jpeg";
 // import ImageUpload from "../assets/images/ImageUpload.png";
 
 const projects = [
@@ -14,7 +17,7 @@ const projects = [
       "The Event App is a modern FullStack app, responsive web application designed to help users discover, create, and manage events effortlessly.",
     image: EventsApp,
     link: "https://findfriend.vercel.app/",
-    technologies: ["Next Js", "Shad.Cn"],
+    technologies: ["Next Js", "ShadCn"],
   },
   {
     title: "Furniture Web",
@@ -22,9 +25,9 @@ const projects = [
       "Furniture Web is a modern and responsive e-commerce website designed for browsing and purchasing furniture online. ",
     image: Furniture,
     link: "https://furniture-web-beta.vercel.app/",
-    technologies: ["React JS", "Tailwind.CSS"],
+    technologies: ["React JS", "TailwindCSS"],
   },
- 
+
   {
     title: "Weather-App",
     description:
@@ -33,17 +36,17 @@ const projects = [
     link: "https://weather-app-two-phi-91.vercel.app/",
     technologies: ["React JS", "Tailwind.CSS"],
   },
- 
+
 ];
 
 const ProjectsSection = () => {
 
-   useEffect(() => {
-      AOS.init({
-        duration: 1000,
-        once: true,
-      });
-    }, []);
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true,
+    });
+  }, []);
 
   return (
 
@@ -55,11 +58,14 @@ const ProjectsSection = () => {
             key={index}
             className="bg-gray-800 rounded-lg shadow-lg transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl"
           >
-            <img
-              src={project.image}
-              alt={project.title}
-              className="w-full h-52 object-cover rounded-xl p-2 "
-            />
+            <div className="relative w-full h-52 overflow-hidden rounded-lg">
+              <Image
+                src={project.image}
+                alt={project.title}
+                fill
+                className="object-cover rounded-lg"
+              />
+            </div>
             <div className="p-6">
               <h3 className="text-xl font-serif font-semibold mb-2">{project.title}</h3>
               <p className="text-gray-300 font-serif mb-3">{project.description}</p>

@@ -1,9 +1,11 @@
+"use client";
 import { useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import Saif from '../assets/images/Saif.jpeg';
-import Adnan from '../assets/images/Adnan.jpeg';
-import Noman from '../assets/images/NomanV2.png';
+import Image from 'next/image';
+import Saif from '../../../public/Saif.jpeg';
+import Adnan from '../../../public/Adnan.jpeg';
+import Noman from '../../../public/NomanV2.png';
 
 const testimonials = [
   {
@@ -40,7 +42,7 @@ const Testimonials = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {testimonials.map((testimonial, index) => (
             <div key={index} className="bg-gray-800 p-6 rounded-lg shadow-lg text-center hover:shadow-2xl transition-transform transform hover:scale-105">
-              <img
+              <Image
                 src={testimonial.img}
                 alt={testimonial.name}
                 className="w-24 h-24 rounded-full mx-auto mb-4"

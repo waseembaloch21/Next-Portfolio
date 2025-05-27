@@ -1,5 +1,9 @@
+"use client";
+
+import { useState, useEffect } from "react";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import WelcomeScreen from "./components/welcomeScreen"; // Import WelcomeScreen component
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -11,18 +15,26 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata = {
-  title: "WASEEM || PORTFOLIO",
-  description: "Created By Waseem ",
-};
+
 
 export default function RootLayout({ children }) {
+  const [showWelcome, setShowWelcome] = useState(true);
+
+  useEffect(() => {
+    // Always show the welcome screen on page reload
+    setShowWelcome(true);
+
+    const timeout = setTimeout(() => {
+      setShowWelcome(false);
+    }, 3000); // Adjust timing as needed
+
+    return () => clearTimeout(timeout); // Cleanup timeout
+  }, []);
+
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        {showWelcome ? <WelcomeScreen setShowWelcome={setShowWelcome} /> : children}
       </body>
     </html>
   );

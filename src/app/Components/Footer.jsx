@@ -1,6 +1,8 @@
+"use client";
+
 import React, { useState } from 'react';
 import { FaLinkedinIn, FaGithub } from 'react-icons/fa';
-import emailjs from 'emailjs-com';
+// import emailjs from 'emailjs-com';
 
 const Footer = () => {
   const [email, setEmail] = useState('');
