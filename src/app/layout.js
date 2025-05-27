@@ -3,7 +3,8 @@
 import { useState, useEffect } from "react";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import WelcomeScreen from "./components/welcomeScreen"; // Import WelcomeScreen component
+import WelcomeScreen from "./Components/welcomeScreen";
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
