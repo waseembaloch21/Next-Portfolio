@@ -35,7 +35,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        {showWelcome ? <WelcomeScreen setShowWelcome={setShowWelcome} /> : children}
+        {showWelcome ? <WelcomeScreen  setShowWelcome={setShowWelcome} /> : children}
       </body>
     </html>
   );
