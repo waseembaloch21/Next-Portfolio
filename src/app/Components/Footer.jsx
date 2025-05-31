@@ -5,33 +5,7 @@ import { FaLinkedinIn, FaGithub } from 'react-icons/fa';
 // import emailjs from 'emailjs-com';
 
 const Footer = () => {
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
-
-  const handleSubscription = (e) => {
-    e.preventDefault();
-
-    if (!email) {
-      setMessage('Please enter a valid email.');
-      return;
-    }
-
-    emailjs
-      .send(
-        'service_ijsugv2',
-        'template_jcw3dxg',
-        { email },
-        'dxlIerXfEdTyPTsYl'
-      )
-      .then(() => {
-        setMessage('Subscription successful! Thank you.');
-        setEmail('');
-      })
-      .catch(() => {
-        setMessage('Failed to subscribe. Please try again later.');
-      });
-  };
-
+ 
   return (
     <footer id='footer' className="bg-[#121212] text-white py-10">
       <div className="container mx-auto px-5 md:px-20">
@@ -73,15 +47,13 @@ const Footer = () => {
             </div>
           </div>
 
-
           <div className="md:w-1/3">
             <h3 className="text-lg font-semibold font-serif mb-3">Subscribe to my updates</h3>
-            <form onSubmit={handleSubscription} className="flex flex-col space-y-2">
+            <form  className="flex flex-col space-y-2">
               <input
                 type="email"
                 placeholder="Enter your email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+               
                 className="bg-gray-800 text-white p-2 font-serif rounded-md outline-none w-full"
               />
               <button
@@ -91,7 +63,6 @@ const Footer = () => {
                 Subscribe
               </button>
             </form>
-            {message && <p className="mt-3 font-serif text-sm text-gray-400">{message}</p>}
           </div>
         </div>
 

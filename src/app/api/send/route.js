@@ -1,48 +1,39 @@
-// import { sendEmail } from "@/lib/resend";
+import nodemailer from 'nodemailer';
 
+export async function POST(req) {
+  try {
+    const { name, email, message } = await req.json();
 
-// export async function POST(request) {
-//   try {
-//     const { to, name, subject, message } = await request.json();
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS
+      }
+    });
 
-//     // Validate required fields
-//     if (!to || !subject || !message) {
-//       return new Response(
-//         JSON.stringify({ error: "Missing parameters: 'to', 'subject', and 'message' are required." }),
-//         {
-//           status: 400,
-//           headers: { "Content-Type": "application/json" },
-//         }
-//       );
-//     }
+    const mailOptions = {
+      from: `"Portfolio Contact" <${process.env.EMAIL_USER}>`,
+      to: 'waseemrauf672@gmail.com',
+      replyTo: email,
+      subject: `New Contact Message from ${name}`,
+      html: `
+        <div style="font-family: Arial, sans-serif; color: #333;">
+          <h2>New Message from Portfolio</h2>
+          <p><strong>Name:</strong> ${name}</p>
+          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Message:</strong></p>
+          <p>${message.replace(/\n/g, "<br>")}</p>
+        </div>
+      `,
+    };
 
-//     // Log the incoming email request for debugging purposes
-//     console.log("Sending email:", { to, name, subject, message });
+    const info = await transporter.sendMail(mailOptions);
 
-//     // Send the email using the sendEmail function
-//     const emailResponse = await sendEmail({
-//       to: "waseemrauf672@gmail.com",
-//       name: name || "there", // Use default name if not provided
-//       subject,
-//       message,
-//     });
-
-//     // Log the successful email response
-//     console.log("Email sent successfully:", emailResponse);
-
-//     return new Response(JSON.stringify(emailResponse), {
-//       status: 200,
-//       headers: { "Content-Type": "application/json" },
-//     });
-//   } catch (error) {
-//     // Log error details for debugging
-//     console.error("Error in POST /api/send-email:", error);
-//     return new Response(
-//       JSON.stringify({ error: "Failed to send email. Please try again later." }),
-//       {
-//         status: 500,
-//         headers: { "Content-Type": "application/json" },
-//       }
-//     );
-//   }
-// }
+    console.log("Email sent:", info.response);
+    return Response.json({ success: true });
+  } catch (error) {
+    console.error("Email sending failed:", error);
+    return Response.json({ success: false, error: error.message }, { status: 500 });
+  }
+}
