@@ -3,6 +3,7 @@
 import { useEffect } from 'react';
 import Image from "next/image";
 import AOS from 'aos';
+import { animate } from 'animejs';
 import 'aos/dist/aos.css';
 import EventsApp from "../../../public/Events-app.jpg";
 import Furniture from "../../../public/Furniture1.png";
@@ -22,7 +23,7 @@ const projects = [
   {
     title: "Furniture Web",
     description:
-      "Furniture Web is a modern and responsive e-commerce website designed for browsing and purchasing furniture online. ",
+    "Furniture Web is a modern and responsive e-commerce website designed for browsing and purchasing furniture online. ",
     image: Furniture,
     link: "https://furniture-web-beta.vercel.app/",
     technologies: ["React JS", "TailwindCSS"],
@@ -31,12 +32,12 @@ const projects = [
   {
     title: "Weather-App",
     description:
-      "The Weather App is a responsive web application that provides real-time weather updates for any location worldwide. ",
+    "The Weather App is a responsive web application that provides real-time weather updates for any location worldwide. ",
     image: WeatherApp,
     link: "https://weather-app-two-phi-91.vercel.app/",
     technologies: ["React JS", "Tailwind.CSS"],
   },
-
+  
 ];
 
 const ProjectsSection = () => {
@@ -47,6 +48,24 @@ const ProjectsSection = () => {
       once: true,
     });
   }, []);
+  
+  const animation = animate(targets, parameters);
+  animate(chars, {
+  // Property keyframes
+  y: [
+    { to: '-2.75rem', ease: 'outExpo', duration: 600 },
+    { to: 0, ease: 'outBounce', duration: 800, delay: 100 }
+  ],
+  // Property specific parameters
+  rotate: {
+    from: '-1turn',
+    delay: 0
+  },
+  delay: stagger(50),
+  ease: 'inOutCirc',
+  loopDelay: 1000,
+  loop: true
+});
 
   return (
 

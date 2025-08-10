@@ -11,7 +11,6 @@ import ExpressJS from "../../../public/express.png";
 import Mongodb from "../../../public/mongodb.png";
 import Bootstrap from "../../../public/bootstrap.png";
 import TailwindCss from "../../../public/tailwind.png";
-import Clanguage from "../../../public/C.png";
 
 const skills = [
   { title: "HTML5", image: HTML },
@@ -23,7 +22,6 @@ const skills = [
     { title: "Express JS", image: ExpressJS },
     { title: "Bootstrap", image: Bootstrap },
     { title: "Tailwind Css", image: TailwindCss },
-    { title: "C Language", image: Clanguage },
   ];
   const SkillsSection = () => {
    const [isMobile, setIsMobile] = useState(false);

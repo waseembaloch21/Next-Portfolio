@@ -6,25 +6,21 @@ import { FaUserAlt, FaEnvelope, FaSpinner, FaPaperPlane } from 'react-icons/fa';
 const Contact = () => {
     const [formData, setFormData] = useState({ name: '', email: '', message: '' });
     const [status, setStatus] = useState('');
-
     const handleChange = (e) => {
         setFormData((prev) => ({
             ...prev,
             [e.target.id]: e.target.value,
         }));
     };
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         setStatus('Sending...');
-
         try {
             const response = await fetch('/api/send', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData),
             });
-
             const result = await response.json();
 
             if (result.success) {
