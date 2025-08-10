@@ -3,13 +3,10 @@
 import { useEffect } from 'react';
 import Image from "next/image";
 import AOS from 'aos';
-import { animate } from 'animejs';
 import 'aos/dist/aos.css';
 import EventsApp from "../../../public/Events-app.jpg";
 import Furniture from "../../../public/Furniture1.png";
-// import TodoApp from "../assets/images/Todo-app.jpeg";
 import WeatherApp from "../../../public/Weather1.jpeg";
-// import ImageUpload from "../assets/images/ImageUpload.png";
 
 const projects = [
   {
@@ -23,59 +20,43 @@ const projects = [
   {
     title: "Furniture Web",
     description:
-    "Furniture Web is a modern and responsive e-commerce website designed for browsing and purchasing furniture online. ",
+      "Furniture Web is a modern and responsive e-commerce website designed for browsing and purchasing furniture online.",
     image: Furniture,
     link: "https://furniture-web-beta.vercel.app/",
     technologies: ["React JS", "TailwindCSS"],
   },
-
   {
     title: "Weather-App",
     description:
-    "The Weather App is a responsive web application that provides real-time weather updates for any location worldwide. ",
+      "The Weather App is a responsive web application that provides real-time weather updates for any location worldwide.",
     image: WeatherApp,
     link: "https://weather-app-two-phi-91.vercel.app/",
     technologies: ["React JS", "Tailwind.CSS"],
   },
-  
 ];
 
 const ProjectsSection = () => {
-
   useEffect(() => {
+    // Init AOS
     AOS.init({
       duration: 1000,
       once: true,
     });
   }, []);
-  
-  const animation = animate(targets, parameters);
-  animate(chars, {
-  // Property keyframes
-  y: [
-    { to: '-2.75rem', ease: 'outExpo', duration: 600 },
-    { to: 0, ease: 'outBounce', duration: 800, delay: 100 }
-  ],
-  // Property specific parameters
-  rotate: {
-    from: '-1turn',
-    delay: 0
-  },
-  delay: stagger(50),
-  ease: 'inOutCirc',
-  loopDelay: 1000,
-  loop: true
-});
 
   return (
-
-    <div id="projects" className="bg-[#121212] text-white py-10 px-5 mt-7 sm:px-20 md:px-32" data-aos="zoom-in" data-aos-delay="200">
-      <h2 className="text-3xl font-bold font-serif  mb-8 text-center">My Projects</h2>
+    <div
+      id="projects"
+      className="bg-[#121212] text-white py-10 px-5 mt-7 sm:px-20 md:px-32"
+      data-aos="zoom-in"
+      data-aos-delay="200"
+    >
+      <h2 className="text-3xl font-bold font-serif mb-8 text-center ">My Projects</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {projects.map((project, index) => (
           <div
             key={index}
-            className="bg-gray-800 rounded-lg shadow-lg transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl"
+            className="project-card bg-gray-800 rounded-lg shadow-lg transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl"
           >
             <div className="relative w-full h-52 overflow-hidden rounded-lg">
               <Image
