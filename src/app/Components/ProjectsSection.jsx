@@ -7,6 +7,7 @@ import 'aos/dist/aos.css';
 import EventsApp from "../../../public/Events-app.jpg";
 import Furniture from "../../../public/Furniture1.png";
 import WeatherApp from "../../../public/Weather1.jpeg";
+import TodoApp from "../../../public/Todo-app.jpeg"
 
 const projects = [
   {
@@ -17,6 +18,22 @@ const projects = [
     link: "https://findfriend.vercel.app/",
     technologies: ["Next Js", "ShadCn"],
   },
+    {
+    title: "Todo-App",
+    description:
+      "The Todo App is a productivity-focused project I built to strengthen my front-end development skills. It provides an intuitive interface for creating, editing, filtering, and managing tasks, making daily planning effortless.",
+    image: TodoApp,
+    link: "https://todo-app-5tad.vercel.app/",
+    technologies: ["React JS", "Style.CSS"],
+  },
+    {
+    title: "Weather-App",
+    description:
+      "The Weather App is a responsive web application that provides real-time weather updates for any location worldwide.",
+    image: WeatherApp,
+    link: "https://weather-app-two-phi-91.vercel.app/",
+    technologies: ["React JS", "Tailwind.CSS"],
+  },
   {
     title: "Furniture Web",
     description:
@@ -25,14 +42,7 @@ const projects = [
     link: "https://furniture-web-beta.vercel.app/",
     technologies: ["React JS", "TailwindCSS"],
   },
-  {
-    title: "Weather-App",
-    description:
-      "The Weather App is a responsive web application that provides real-time weather updates for any location worldwide.",
-    image: WeatherApp,
-    link: "https://weather-app-two-phi-91.vercel.app/",
-    technologies: ["React JS", "Tailwind.CSS"],
-  },
+ 
 ];
 
 const ProjectsSection = () => {
