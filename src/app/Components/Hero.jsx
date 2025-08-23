@@ -49,7 +49,7 @@ const Hero = () => {
                 >
                     About Me
                 </button>
-                <a href="Waseem resume.pdf" download>
+                <a href="Waseem Baloch resume.pdf" download>
                     <button
                         className="cv"
                     >
