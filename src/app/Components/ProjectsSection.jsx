@@ -7,47 +7,45 @@ import 'aos/dist/aos.css';
 import EventsApp from "../../../public/Events-app.jpg";
 import Furniture from "../../../public/Furniture1.png";
 import WeatherApp from "../../../public/Weather1.jpeg";
-import TodoApp from "../../../public/Todo-app.jpeg"
+import TodoApp from "../../../public/Todo-app.jpeg";
 
 const projects = [
   {
     title: "Events App",
-    description:
-      "The Event App is a modern FullStack app, responsive web application designed to help users discover, create, and manage events effortlessly.",
+    description: "A modern fullstack app to discover, create, and manage events effortlessly.",
     image: EventsApp,
-    link: "https://findfriend.vercel.app/",
-    technologies: ["Next Js", "ShadCn"],
+    demo: "https://findfriend.vercel.app/",
+    github: "https://github.com/waseembaloch21/EventsApp", // replace with actual repo
+    technologies: ["Next.js", "ShadCn"],
   },
-    {
+  {
     title: "Todo-App",
-    description:
-      "The Todo App is a productivity-focused project I built to strengthen my front-end development skills. It provides an intuitive interface for creating, editing, filtering, and managing tasks, making daily planning effortless.",
+    description: "A productivity-focused app with task creation, editing, filtering, and management.",
     image: TodoApp,
-    link: "https://todo-app-5tad.vercel.app/",
-    technologies: ["React JS", "Style.CSS"],
+    demo: "https://todo-app-5tad.vercel.app/",
+    github: "https://github.com/waseembaloch21/Todo-App", // replace with actual repo
+    technologies: ["React.js", "CSS"],
   },
-    {
+  {
     title: "Weather-App",
-    description:
-      "The Weather App is a responsive web application that provides real-time weather updates for any location worldwide.",
+    description: "A responsive app providing real-time weather updates worldwide.",
     image: WeatherApp,
-    link: "https://weather-app-two-phi-91.vercel.app/",
-    technologies: ["React JS", "Tailwind.CSS"],
+    demo: "https://weather-app-two-phi-91.vercel.app/",
+    github: "https://github.com/waseembaloch21/Weather-App", // replace with actual repo
+    technologies: ["React.js", "TailwindCSS"],
   },
   {
     title: "Furniture Web",
-    description:
-      "Furniture Web is a modern and responsive e-commerce website designed for browsing and purchasing furniture online.",
+    description: "A modern e-commerce site for browsing and purchasing furniture online.",
     image: Furniture,
-    link: "https://furniture-web-beta.vercel.app/",
-    technologies: ["React JS", "TailwindCSS"],
+    demo: "https://furniture-web-beta.vercel.app/",
+    github: "https://github.com/waseembaloch21/Furniture-Web", // replace with actual repo
+    technologies: ["React.js", "TailwindCSS"],
   },
- 
 ];
 
 const ProjectsSection = () => {
   useEffect(() => {
-    // Init AOS
     AOS.init({
       duration: 1000,
       once: true,
@@ -57,46 +55,69 @@ const ProjectsSection = () => {
   return (
     <div
       id="projects"
-      className="bg-[#121212] text-white py-10 px-5 mt-7 sm:px-20 md:px-32"
+      className="bg-[#121212] text-white py-16 px-5 sm:px-20 md:px-32"
       data-aos="zoom-in"
       data-aos-delay="200"
     >
-      <h2 className="text-3xl font-bold font-serif mb-8 text-center ">My Projects</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <h2 className="text-3xl font-bold font-serif mb-10 text-center">
+        My Projects
+      </h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
         {projects.map((project, index) => (
           <div
             key={index}
-            className="project-card bg-gray-800 rounded-lg shadow-lg transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl"
+            className="bg-gray-800 rounded-lg shadow-lg transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl"
           >
-            <div className="relative w-full h-52 overflow-hidden rounded-lg">
+            {/* Image */}
+            <div className="relative w-full h-52 overflow-hidden rounded-t-lg">
               <Image
                 src={project.image}
                 alt={project.title}
                 fill
-                className="object-cover rounded-lg"
+                className="object-cover"
               />
             </div>
-            <div className="p-6">
-              <h3 className="text-xl font-serif font-semibold mb-2">{project.title}</h3>
-              <p className="text-gray-300 font-serif mb-3">{project.description}</p>
-              <div className="flex flex-wrap gap-2 mb-3">
-                {project.technologies.map((tech, idx) => (
-                  <span
-                    key={idx}
-                    className="bg-cyan-300 text-black text-xs font-serif font-medium py-1 px-3 rounded-full"
-                  >
-                    #{tech}
-                  </span>
-                ))}
+
+            {/* Content */}
+            <div className="p-6 flex flex-col justify-between h-[300px]">
+              <div>
+                <h3 className="text-xl font-serif font-semibold mb-2">
+                  {project.title}
+                </h3>
+                <p className="text-gray-300 font-serif text-sm mb-4">
+                  {project.description}
+                </p>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {project.technologies.map((tech, idx) => (
+                    <span
+                      key={idx}
+                      className="bg-cyan-300 text-black text-xs font-medium py-1 px-3 rounded-full"
+                    >
+                      #{tech}
+                    </span>
+                  ))}
+                </div>
               </div>
-              <a
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block text-center font-serif bg-cyan-300 text-black py-3 px-6 rounded-lg hover:bg-cyan-600 transition"
-              >
-                View Project
-              </a>
+
+              {/* Buttons */}
+              <div className="flex gap-3 mt-auto">
+                <a
+                  href={project.demo}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 text-center bg-cyan-300 text-black py-2 rounded-lg font-serif hover:bg-cyan-500 transition"
+                >
+                  Live Demo
+                </a>
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 text-center bg-gray-700 text-white py-2 rounded-lg font-serif hover:bg-gray-600 transition"
+                >
+                  GitHub
+                </a>
+              </div>
             </div>
           </div>
         ))}

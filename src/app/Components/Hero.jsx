@@ -38,10 +38,10 @@ const Hero = () => {
         <div className='flex flex-col md:flex-row justify-between items-center font-poppins gap-5 md:gap-20 px-5'>
 
             <div className='text-center md:text-left' data-aos="zoom-out">
-                <h1 className='text-3xl md:text-5xl font-serif font-bold mb-2 md:mb-4'>Hy!I AM</h1>
+                <h1 className='text-3xl md:text-5xl font-serif font-bold mb-2 md:mb-4'>👋 Hi, I'm</h1>
                 <span className='sm:text-5xl text-cyan-300 font-bold font-serif md:text-5xl'>Waseem Baloch</span><br />
 
-                <h1 className='font-serif text-3xl'>Passionate</h1><span ref={typedElementRef} className='sm:text-4xl text-cyan-300 font-serif md:text-4xl font-semibold'></span>
+                <h1 className='font-serif text-3xl'>Passionate About</h1><span ref={typedElementRef} className='sm:text-4xl text-cyan-300 font-serif md:text-4xl font-semibold'></span>
                 <p className='text-gray-400 font-serif leading-7 mb-6'>I design a beautiful, responsive, and user-friendly web interfaces with modern frontend technologies.</p>
                 <button
                     onClick={() => setIsModalOpen(true)}
@@ -81,51 +81,78 @@ const Hero = () => {
                 </a>
             </div>
 
-            {/* Modal */}
-            {isModalOpen && (
-                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-                    <div className="bg-gray-900 text-white rounded-lg shadow-lg p-8 w-11/12 md:w-2/3 lg:w-1/2 relative flex flex-col md:flex-row gap-8">
-                        {/* Left - Information */}
-                        <div className="flex-1">
-                            <button
-                                onClick={() => setIsModalOpen(false)}
-                                className="absolute top-4 right-4 text-gray-400 hover:text-gray-200 text-4xl"
-                            >
-                                &times;
-                            </button>
-                            <h2 className="text-2xl font-serif font-bold mb-4">About Me</h2>
-                            <p className="text-gray-300 font-serif mb-6">
-                                I am a passionate Front-End Developer specialized in creating responsive and user-friendly web interfaces. My core skills include:
-                            </p>
-                            <div className='flex justify-center items-center'>
-                                <ul className="list-disc list-inside text-gray-400 mb-4">
-                                    <li className="flex font-serif items-center gap-2 text-blue-600 text-2xl"><FaReact /> React.js</li>
-                                    <li className="flex font-serif items-center gap-2 text-blue-400 text-2xl"><SiTailwindcss /> Tailwind CSS</li>
-                                    <li className="flex font-serif items-center gap-2 text-yellow-400 text-2xl"><SiJavascript /> JavaScript</li>
-                                    <li className="flex font-serif items-center gap-2 text-orange-500 text-2xl"><SiHtml5 /> HTML5</li>
-                                    <li className="flex font-serif items-center gap-2 text-blue-500 text-2xl"><SiCss3 /> CSS3</li>
-                                    <li className="flex font-serif items-center gap-2 text-purple-600 text-2xl"><FaFigma /> Figma</li>
-                                    <li className="flex font-serif items-center gap-2 text-indigo-600 text-2xl"><SiBootstrap /> Bootstrap</li>
-                                    <li className="flex font-serif items-center gap-2 text-gray-600 text-2xl"><FaGit /> Git & GitHub</li>
-                                </ul>
+          {/* Modal */}
+{isModalOpen && (
+  <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50">
+    <div className="bg-gray-900 text-white rounded-2xl shadow-2xl p-8 w-11/12 md:w-3/4 lg:w-2/3 relative">
+      
+      {/* Close Button */}
+      <button
+        onClick={() => setIsModalOpen(false)}
+        className="absolute top-4 right-4 text-gray-400 hover:text-white text-3xl"
+      >
+        &times;
+      </button>
 
-                                {/* Right - Image */}
-                                <div className="flex-1 flex justify-center items-center">
-                                    <img
-                                        className=" hidden sm:block w-60 h-60 rounded-full border-4 border-cyan-300 shadow-lg"
-                                        src="/Logo.jpeg"
-                                        alt="Waseem Baloch"
-                                    />
-                                </div>
-                            </div>
+      <div className="flex flex-col md:flex-row gap-8 items-center">
+        {/* Left - Image */}
+        <div className="flex-1 flex justify-center">
+          <Image
+            src="/Logo.jpeg"
+            width={220}
+            height={220}
+            alt="Waseem Baloch"
+            className="rounded-full border-4 border-cyan-400 shadow-lg"
+          />
+        </div>
 
-                            <p className="text-gray-300 font-serif">
-                                <strong>Education:</strong> BS-Information Technology , Self-Learning.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            )}
+        {/* Right - Content */}
+        <div className="flex-1 space-y-4">
+          <h2 className="text-3xl font-bold font-serif text-cyan-300">About Me</h2>
+          <p className="text-gray-300 font-serif">
+            I’m a passionate <span className="text-cyan-300">Front-End Developer</span> 
+            who loves building responsive, user-friendly, and visually stunning web experiences.  
+            Always eager to learn and grow with modern web technologies.
+          </p>
+
+          {/* Skills Grid */}
+          <h3 className="text-xl font-semibold mt-6">Core Skills</h3>
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 text-gray-300">
+            <div className="flex items-center gap-2 bg-gray-800 px-3 py-2 rounded-lg">
+              <FaReact className="text-blue-400 text-2xl" /> React.js
+            </div>
+            <div className="flex items-center gap-2 bg-gray-800 px-3 py-2 rounded-lg">
+              <SiTailwindcss className="text-cyan-400 text-2xl" /> Tailwind CSS
+            </div>
+            <div className="flex items-center gap-2 bg-gray-800 px-3 py-2 rounded-lg">
+              <SiJavascript className="text-yellow-400 text-2xl" /> JavaScript
+            </div>
+            <div className="flex items-center gap-2 bg-gray-800 px-3 py-2 rounded-lg">
+              <SiHtml5 className="text-orange-500 text-2xl" /> HTML5
+            </div>
+            <div className="flex items-center gap-2 bg-gray-800 px-3 py-2 rounded-lg">
+              <SiCss3 className="text-blue-500 text-2xl" /> CSS3
+            </div>
+            <div className="flex items-center gap-2 bg-gray-800 px-3 py-2 rounded-lg">
+              <FaFigma className="text-purple-500 text-2xl" /> Figma
+            </div>
+            <div className="flex items-center gap-2 bg-gray-800 px-3 py-2 rounded-lg">
+              <SiBootstrap className="text-indigo-500 text-2xl" /> Bootstrap
+            </div>
+            <div className="flex items-center gap-2 bg-gray-800 px-3 py-2 rounded-lg">
+              <FaGit className="text-red-500 text-2xl" /> Git & GitHub
+            </div>
+          </div>
+
+          {/* Education */}
+          <p className="mt-6 text-gray-300">
+            🎓 <strong>Education:</strong> BS in Information Technology, Self-Learning Web Development.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+)}
         </div>
     );
 }
