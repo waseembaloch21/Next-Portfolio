@@ -93,7 +93,7 @@ const ProjectsSection = () => {
                   {project.technologies.map((tech, idx) => (
                     <span
                       key={idx}
-                      className="bg-cyan-300 text-black text-xs font-medium py-1 px-3 rounded-full"
+                      className="bg-gradient-to-r from-cyan-400 to-blue-500 text-black text-xs font-medium py-1 px-3 rounded-full"
                     >
                       #{tech}
                     </span>
@@ -107,7 +107,7 @@ const ProjectsSection = () => {
                   href={project.demo}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 text-center bg-cyan-300 text-black py-2 rounded-lg font-serif hover:bg-cyan-500 transition"
+                  className="flex-1 text-center bg-gradient-to-r from-cyan-400 to-blue-500 text-black py-2 rounded-lg font-serif hover:bg-cyan-500 transition"
                 >
                   Live Demo
                 </a>

@@ -39,19 +39,19 @@ const Hero = () => {
 
             <div className='text-center md:text-left' data-aos="zoom-out">
                 <h1 className='text-3xl md:text-5xl font-serif font-bold mb-2 md:mb-4'>👋 Hi, I'm</h1>
-                <span className='sm:text-5xl text-cyan-300 font-bold font-serif md:text-5xl'>Waseem Baloch</span><br />
+                <span className='sm:text-5xl bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent font-bold font-serif md:text-5xl'>Waseem Baloch</span><br />
 
-                <h1 className='font-serif text-3xl'>Passionate About</h1><span ref={typedElementRef} className='sm:text-4xl text-cyan-300 font-serif md:text-4xl font-semibold'></span>
+                <h1 className='font-serif text-3xl'>Passionate About</h1><span ref={typedElementRef} className='sm:text-4xl bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent font-serif md:text-4xl font-semibold'></span>
                 <p className='text-gray-400 font-serif leading-7 mb-6'>I design a beautiful, responsive, and user-friendly web interfaces with modern frontend technologies.</p>
                 <button
                     onClick={() => setIsModalOpen(true)}
-                    className="cv"
+                    className="bg-gradient-to-r from-cyan-400 to-blue-500 text-black font-semibold rounded-full py-2 px-5 hover:scale-105 transition-all duration-300 "
                 >
                     About Me
                 </button>
                 <a href="Waseem Baloch resume.pdf" download>
                     <button
-                        className="cv"
+                        className="bg-gradient-to-r from-cyan-400 to-blue-500 text-black font-semibold rounded-full py-2 px-5 hover:scale-105 transition-all duration-300 "
                     >
                         Download CV
                     </button>
@@ -108,7 +108,7 @@ const Hero = () => {
 
         {/* Right - Content */}
         <div className="flex-1 space-y-4">
-          <h2 className="text-3xl font-bold font-serif text-cyan-300">About Me</h2>
+          <h2 className="text-3xl font-bold font-serif bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent">About Me</h2>
           <p className="text-gray-300 font-serif">
             I’m a passionate <span className="text-cyan-300">Front-End Developer</span> 
             who loves building responsive, user-friendly, and visually stunning web experiences.  

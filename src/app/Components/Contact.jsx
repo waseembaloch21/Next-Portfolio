@@ -99,7 +99,7 @@ const Contact = () => {
 
                     <button
                         type="submit"
-                        className="w-full bg-cyan-300 hover:bg-cyan-500 py-3 rounded-md font-serif text-black transition duration-300"
+                        className="w-full bg-gradient-to-r from-cyan-400 to-blue-500 py-3 rounded-md font-serif text-black transition duration-300"
                         data-aos="zoom-out"
                         data-aos-delay="400"
                     >

@@ -21,26 +21,26 @@ const Navbar = () => {
                             />
                           </div>
             
-                <span className='font-serif text-lg md:text-xl font-semibold '>Waseem Baloch</span>
+                <span className=' bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent font-serif text-lg md:text-xl font-semibold '>Waseem Baloch</span>
             </a>
 
             <nav>
                 <ul className='hidden md:flex gap-6 font-serif text-base'>
                     <li>
-                        <a href="#home" className='hover:text-blue-600 hover:underline cursor-pointer text-xl font-serif font-bold'>Home</a>
+                        <a href="#home" className='hover:text-blue-600 hover:underline cursor-pointer text-xl font-serif font-bold bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent'>Home</a>
                     </li>
                     <li>
-                        <a href="#projects" className='hover:text-blue-600 hover:underline cursor-pointer text-xl font-serif font-bold'>Projects</a>
+                        <a href="#projects" className='hover:text-blue-600 hover:underline cursor-pointer text-xl font-serif font-bold bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent'>Projects</a>
                     </li>
 
                     <li>
-                        <a href="#services" className='hover:text-blue-600 hover:underline cursor-pointer text-xl font-serif font-bold'>Services</a>
+                        <a href="#services" className='hover:text-blue-600 hover:underline cursor-pointer text-xl font-serif font-bold bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent'>Services</a>
                     </li>
                     <li>
-                        <a href="#skills" className='hover:text-blue-600 hover:underline cursor-pointer text-xl font-serif font-bold'>Skills</a>
+                        <a href="#skills" className='hover:text-blue-600 hover:underline cursor-pointer text-xl font-serif font-bold bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent'>Skills</a>
                     </li>
                     <li>
-                        <a href="#contact" className='hover:text-blue-600 hover:underline cursor-pointer text-xl font-serif font-bold'>Contact</a>
+                        <a href="#contact" className='hover:text-blue-600 hover:underline cursor-pointer text-xl font-serif font-bold bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent'>Contact</a>
                     </li>
                 </ul>
             </nav>
