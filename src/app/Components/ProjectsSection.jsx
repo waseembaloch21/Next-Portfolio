@@ -59,8 +59,10 @@ const ProjectsSection = () => {
       data-aos="zoom-in"
       data-aos-delay="200"
     >
-      <h2 className="text-3xl font-bold font-serif mb-10 text-center">
-        My Projects
+       <h2 className="text-4xl font-bold text-center mb-14">
+        <span className="bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent">
+          My Projects
+        </span>
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
         {projects.map((project, index) => (

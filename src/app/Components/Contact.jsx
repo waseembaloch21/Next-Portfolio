@@ -40,8 +40,10 @@ const Contact = () => {
             className="py-20 px-4 bg-gradient-to-br-black text-white"
         >
             <div className="max-w-xl mx-auto space-y-12">
-                <h2 className="text-4xl font-bold text-center" data-aos="fade-up">
-                    Get In Touch
+                <h2 className="text-4xl font-bold text-center mb-12">
+                    <span className="bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent">
+                        Get In Touch
+                    </span>
                 </h2>
 
                 <form
