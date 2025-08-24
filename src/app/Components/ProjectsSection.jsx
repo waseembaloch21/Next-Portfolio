@@ -15,7 +15,7 @@ const projects = [
     description: "A modern fullstack app to discover, create, and manage events effortlessly.",
     image: EventsApp,
     demo: "https://findfriend.vercel.app/",
-    github: "https://github.com/waseembaloch21/EventsApp", // replace with actual repo
+    github: "https://github.com/waseembaloch21/EventsApp", 
     technologies: ["Next.js", "ShadCn"],
   },
   {
@@ -23,7 +23,7 @@ const projects = [
     description: "A productivity-focused app with task creation, editing, filtering, and management.",
     image: TodoApp,
     demo: "https://todo-app-5tad.vercel.app/",
-    github: "https://github.com/waseembaloch21/Todo-App", // replace with actual repo
+    github: "https://github.com/waseembaloch21/Todo-App", 
     technologies: ["React.js", "CSS"],
   },
   {
@@ -31,7 +31,7 @@ const projects = [
     description: "A responsive app providing real-time weather updates worldwide.",
     image: WeatherApp,
     demo: "https://weather-app-two-phi-91.vercel.app/",
-    github: "https://github.com/waseembaloch21/Weather-App", // replace with actual repo
+    github: "https://github.com/waseembaloch21/Weather-App", 
     technologies: ["React.js", "TailwindCSS"],
   },
   {
@@ -39,7 +39,7 @@ const projects = [
     description: "A modern e-commerce site for browsing and purchasing furniture online.",
     image: Furniture,
     demo: "https://furniture-web-beta.vercel.app/",
-    github: "https://github.com/waseembaloch21/Furniture-Web", // replace with actual repo
+    github: "https://github.com/waseembaloch21/Furniture-Web", 
     technologies: ["React.js", "TailwindCSS"],
   },
 ];

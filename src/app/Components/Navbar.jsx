@@ -62,19 +62,19 @@ const Navbar = () => {
 
                     <ul className='flex flex-col gap-6 font-poppins text-xl  text-center'>
                         <li>
-                            <a href="#home" className='hover:text-gray-400 font-serif cursor-pointer' onClick={toggleMenu}>Home</a>
+                            <a href="#home" className='hover:text-gray-400 bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent font-serif cursor-pointer' onClick={toggleMenu}>Home</a>
                         </li>
                         <li>
-                            <a href="#projects" className='hover:text-gray-400 font-serif cursor-pointer' onClick={toggleMenu}>Projects</a>
+                            <a href="#projects" className='hover:text-gray-400 bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent font-serif cursor-pointer' onClick={toggleMenu}>Projects</a>
                         </li>
                         <li>
-                            <a href="#services" className='hover:text-gray-400 font-serif cursor-pointer' onClick={toggleMenu}>Services</a>
+                            <a href="#services" className='hover:text-gray-400 bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent font-serif cursor-pointer' onClick={toggleMenu}>Services</a>
                         </li>
                         <li>
-                            <a href="#skills" className='hover:text-gray-400 font-serif cursor-pointer' onClick={toggleMenu}>Skills</a>
+                            <a href="#skills" className='hover:text-gray-400 bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent font-serif cursor-pointer' onClick={toggleMenu}>Skills</a>
                         </li>
                         <li>
-                            <a href="#contact" className='hover:text-gray-400 font-serif cursor-pointer' onClick={toggleMenu}>Contact</a>
+                            <a href="#contact" className='hover:text-gray-400 bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent font-serif cursor-pointer' onClick={toggleMenu}>Contact</a>
                         </li>
                     </ul>
                 </div>
