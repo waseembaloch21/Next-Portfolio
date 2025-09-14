@@ -60,7 +60,7 @@ const Hero = () => {
 
              <div className="relative w-[220px] sm:w-[280px] md:w-[340px] lg:w-[380px] xl:w-[420px] aspect-square rounded-full border-4  border-cyan-400 overflow-hidden animate-float transition-transform duration-500"    data-aos="fade-up">
             <Image
-              src="/Logo.jpeg"
+              src="/WaseemB.jpg"
               alt="Waseem Baloch"
               fill
               priority

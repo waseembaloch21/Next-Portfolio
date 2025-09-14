@@ -11,16 +11,16 @@ const Navbar = () => {
     return (
         <div className='flex justify-between items-center px-5 py-3 shadow-md'>
             <a href="#home" className='flex items-center gap-3'>
-<div className='relative rounded-full w-14 md:w-16 h-14 md:h-16 border-2 border-cyan-300 overflow-hidden'>
-                            <Image
-                              src="/Logo2.jpg"
-                              alt="Waseem Baloch"
-                              fill
-                              priority
-                              className="object-cover"
-                            />
-                          </div>
-            
+                <div className='relative rounded-full w-14 md:w-16 h-14 md:h-16 border-2 border-cyan-300 overflow-hidden'>
+                    <Image
+                        src="/Logo2.jpg"
+                        alt="Waseem Baloch"
+                        fill
+                        priority
+                        className="object-cover"
+                    />
+                </div>
+
                 <span className=' bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent font-serif text-lg md:text-xl font-semibold '>Waseem Baloch</span>
             </a>
 
