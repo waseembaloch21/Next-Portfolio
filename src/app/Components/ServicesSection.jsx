@@ -34,12 +34,12 @@ const ServicesSection = () => {
   return (
     <section
       id="services"
-      className="bg-black text-gray-100 py-16 px-6 sm:px-12 lg:px-24"
+      className="bg-black text-gray-100 py-16 px-6 sm:px-12 lg:px-24 font-sans"
     >
-      <h2 className="text-4xl font-bold text-center mb-14">
-        <span className="bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent">
-          My Services
-        </span>
+      <h2 className="relative text-5xl md:text-6xl font-extrabold mb-16 text-center tracking-tight 
+          bg-gradient-to-r from-teal-400 via-sky-500 to-blue-500 bg-clip-text text-transparent"
+        data-aos="fade-down">
+        My Services
       </h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">

@@ -6,12 +6,6 @@ import BackgroundCanvas from './BackgroundCanvas';
 const HeaderSection = () => {
   return (
     <header className='h-screen  flex flex-col relative'>
-      {/* Background Canvas */}
-      {/* <BackgroundCanvas /> */}
-      <div>
-        <BackgroundCanvas />
-
-      </div>
       {/* Navbar */}
       <div className='px-5 sm:px-20 md:px-32'>
         <Navbar />

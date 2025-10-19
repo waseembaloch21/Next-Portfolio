@@ -4,13 +4,13 @@ import { FaLinkedinIn, FaGithub } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer id="footer" className="bg-black text-white py-14 border-t border-gray-800">
+    <footer id="footer" className="bg-black text-white py-14 border-t border-gray-800 font-sans ">
       <div className="container mx-auto px-6 md:px-20">
         <div className="flex flex-col md:flex-row justify-between items-center md:items-start gap-12">
-          
+
           {/* Branding */}
           <div className="md:w-1/3 text-center md:text-left">
-            <h2 className="text-2xl font-bold mb-3 font-serif bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent">
+            <h2 className="text-2xl font-bold mb-3 font-serif bg-cyan-500 bg-clip-text text-transparent">
               Waseem Baloch
             </h2>
             <p className="text-gray-400 font-serif leading-relaxed">

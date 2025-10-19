@@ -37,14 +37,14 @@ const Testimonials = () => {
   }, []);
 
   return (
-    <section className="bg-[#121212] py-20">
+    <section className="bg-[#121212] py-20 text-white font-sans ">
       <div
         className="container mx-auto px-6 text-center text-white"
         data-aos="fade-up"
         data-aos-delay="200"
       >
         <h2 className="text-4xl font-bold text-center mb-14">
-          <span className="bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent">
+          <span className="bg-cyan-500 bg-clip-text text-transparent">
             What My Friends Say
           </span>
         </h2>

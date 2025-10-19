@@ -1,159 +1,101 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import AOS from 'aos';
-import Image from 'next/image';
-import { TiSocialLinkedin } from "react-icons/ti";
-import { FaTwitter } from "react-icons/fa";
-import { ImGithub } from "react-icons/im";
-import { FaReact } from 'react-icons/fa';
-import { SiTailwindcss } from 'react-icons/si';
-import { SiJavascript } from 'react-icons/si';
-import { SiHtml5 } from 'react-icons/si';
-import { SiCss3 } from 'react-icons/si';
-import { FaFigma } from 'react-icons/fa';
-import { SiBootstrap } from 'react-icons/si';
-import { FaGit } from 'react-icons/fa';
 
-import Typed from 'typed.js';
+export default function Hero() {
+  const roles = [
+    "Web Developer 🌐",
+    "Problem Solver 🧠",
+    "Creative Thinker ✨",
+  ];
 
-const Hero = () => {
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const typedElementRef = useRef(null);
+  const [currentRole, setCurrentRole] = useState(0);
 
-    useEffect(() => {
-        AOS.init({ duration: 1000, once: true });
-        const typed = new Typed(typedElementRef.current, {
-            strings: ["FrontEnd Developer", "Web Developer", "Responsive Designer",],
-            typeSpeed: 50,
-            backSpeed: 30,
-            loop: true,
-        });
-        return () => {
-            typed.destroy();
-        };
-    }, []);
+  useEffect(() => {
+    AOS.init({ duration: 1000, easing: 'ease-in-out', once: true });
 
-    return (
-        <div className='flex flex-col md:flex-row justify-between items-center font-poppins gap-5 md:gap-20 px-5'>
+    const interval = setInterval(() => {
+      setCurrentRole((prev) => (prev + 1) % roles.length);
+    }, 2500);
 
-            <div className='text-center md:text-left' data-aos="zoom-out">
-                <h1 className='text-3xl md:text-5xl font-serif font-bold mb-2 md:mb-4'>👋 Hi, I'm</h1>
-                <span className='sm:text-5xl bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent font-bold font-serif md:text-5xl'>Waseem Baloch</span><br />
+    return () => clearInterval(interval);
+  }, []);
 
-                <h1 className='font-serif text-3xl'>Passionate About</h1><span ref={typedElementRef} className='sm:text-4xl bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent font-serif md:text-4xl font-semibold'></span>
-                <p className='text-gray-400 font-serif leading-7 mb-6'>I design a beautiful, responsive, and user-friendly web interfaces with modern frontend technologies.</p>
-                <button
-                    onClick={() => setIsModalOpen(true)}
-                    className="bg-gradient-to-r from-cyan-400 to-blue-500 text-black font-semibold rounded-full py-2 px-5 hover:scale-105 transition-all duration-300 "
-                >
-                    About Me
-                </button>
-                <a href="Waseem Baloch resume.pdf" download>
-                    <button
-                        className="bg-gradient-to-r from-cyan-400 to-blue-500 text-black font-semibold rounded-full py-2 px-5 hover:scale-105 transition-all duration-300 "
-                    >
-                        Download CV
-                    </button>
-                </a>
-            </div>
+  return (
+    <div className="relative isolate overflow-hidden bg-black h-screen flex items-center justify-center">
 
-             <div className="relative w-[220px] sm:w-[280px] md:w-[340px] lg:w-[380px] xl:w-[420px] aspect-square rounded-full border-4  border-cyan-400 overflow-hidden animate-float transition-transform duration-500"    data-aos="fade-up">
-            <Image
-              src="/WaseemB.jpg"
-              alt="Waseem Baloch"
-              fill
-              priority
-              className="object-cover"
-            />
-          </div>
-            <div className="flex flex-row md:flex-col items-center gap-5 text-gray-400">
-                <a href="https://www.linkedin.com/in/waseem-rauf-6076172b5/">
-                    <TiSocialLinkedin />
-                </a>
+      {/* Glowing Orbs */}
+      <div className="absolute top-20 left-20 w-96 h-96 bg-black rounded-full blur-3xl animate-pulse"></div>
+      <div className="absolute bottom-20 right-20 w-96 h-96 bg-black rounded-full blur-3xl animate-pulse"></div>
 
-                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-3xl hover:text-blue-400 cursor-pointer transition transform hover:scale-110">
-                    <FaTwitter />
-                </a>
+      {/* Floating particles */}
+      <div className="absolute inset-0 -z-10">
+        <div className="w-2 h-2 bg-black rounded-full absolute top-1/4 left-1/3 animate-bounce"></div>
+        <div className="w-2 h-2 bg-black rounded-full absolute bottom-1/4 right-1/3 animate-ping"></div>
+        <div className="w-2 h-2 bg-black rounded-full absolute top-1/2 right-1/4 animate-bounce"></div>
+      </div>
 
-                <a href="https://github.com/waseembaloch21" target="_blank" rel="noopener noreferrer" className="text-3xl hover:text-gray-300 cursor-pointer transition transform hover:scale-110">
-                    <ImGithub />
-                </a>
-            </div>
+      {/* Hero Content */}
+      <div className="relative z-10 px-6 text-center max-w-4xl" data-aos="fade-up">
+        <h1
+          className="mt-6 text-5xl text-white sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-tight"
+          data-aos="fade-down"
+        >
+          Hi, I'm{" "}
+          <span className="bg-gradient-to-r from-sky-400 via-indigo-400 to-pink-500 bg-clip-text text-transparent drop-shadow-lg">
+            Waseem Baloch
+          </span>
+        </h1>
 
-          {/* Modal */}
-{isModalOpen && (
-  <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50">
-    <div className="bg-gray-900 text-white rounded-2xl shadow-2xl p-8 w-11/12 md:w-3/4 lg:w-2/3 relative">
-      
-      {/* Close Button */}
-      <button
-        onClick={() => setIsModalOpen(false)}
-        className="absolute top-4 right-4 text-gray-400 hover:text-white text-3xl"
-      >
-        &times;
-      </button>
+        {/* Rotating Roles */}
+        <p
+          className="mt-4 text-2xl sm:text-3xl font-semibold text-gray-300 h-10 transition-all duration-700"
+          data-aos="fade-up"
+          data-aos-delay="200"
+        >
+          {roles[currentRole]}
+        </p>
 
-      <div className="flex flex-col md:flex-row gap-8 items-center">
-        {/* Left - Image */}
-        <div className="flex-1 flex justify-center">
-          <Image
-            src="/Logo.jpeg"
-            width={220}
-            height={220}
-            alt="Waseem Baloch"
-            className="rounded-full border-4 border-cyan-400 shadow-lg"
-          />
-        </div>
+        {/* Sub Text */}
+        <p
+          className="mt-4 text-lg text-gray-400 max-w-xl mx-auto"
+          data-aos="fade-up"
+          data-aos-delay="400"
+        >
+          I build sleek, modern, and scalable digital experiences that inspire, connect, and leave a lasting impact.
+        </p>
 
-        {/* Right - Content */}
-        <div className="flex-1 space-y-4">
-          <h2 className="text-3xl font-bold font-serif bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent">About Me</h2>
-          <p className="text-gray-300 font-serif">
-            I’m a passionate <span className="text-cyan-300">Front-End Developer</span> 
-            who loves building responsive, user-friendly, and visually stunning web experiences.  
-            Always eager to learn and grow with modern web technologies.
-          </p>
+        {/* Call-to-action Buttons */}
+        <div
+          className="mt-8 flex flex-wrap items-center justify-center gap-6"
+          data-aos="zoom-in"
+          data-aos-delay="600"
+        >
+          <a
+            href="Waseem Baloch resume.pdf"
+            download
+            className="rounded-xl bg-gradient-to-r from-sky-500 to-indigo-500 px-7 py-3 text-lg font-semibold text-white shadow-lg hover:shadow-sky-500/50 hover:scale-105 transition-all duration-300"
+          >
+            Download CV
+          </a>
 
-          {/* Skills Grid */}
-          <h3 className="text-xl font-semibold mt-6">Core Skills</h3>
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 text-gray-300">
-            <div className="flex items-center gap-2 bg-gray-800 px-3 py-2 rounded-lg">
-              <FaReact className="text-blue-400 text-2xl" /> React.js
-            </div>
-            <div className="flex items-center gap-2 bg-gray-800 px-3 py-2 rounded-lg">
-              <SiTailwindcss className="text-cyan-400 text-2xl" /> Tailwind CSS
-            </div>
-            <div className="flex items-center gap-2 bg-gray-800 px-3 py-2 rounded-lg">
-              <SiJavascript className="text-yellow-400 text-2xl" /> JavaScript
-            </div>
-            <div className="flex items-center gap-2 bg-gray-800 px-3 py-2 rounded-lg">
-              <SiHtml5 className="text-orange-500 text-2xl" /> HTML5
-            </div>
-            <div className="flex items-center gap-2 bg-gray-800 px-3 py-2 rounded-lg">
-              <SiCss3 className="text-blue-500 text-2xl" /> CSS3
-            </div>
-            <div className="flex items-center gap-2 bg-gray-800 px-3 py-2 rounded-lg">
-              <FaFigma className="text-purple-500 text-2xl" /> Figma
-            </div>
-            <div className="flex items-center gap-2 bg-gray-800 px-3 py-2 rounded-lg">
-              <SiBootstrap className="text-indigo-500 text-2xl" /> Bootstrap
-            </div>
-            <div className="flex items-center gap-2 bg-gray-800 px-3 py-2 rounded-lg">
-              <FaGit className="text-red-500 text-2xl" /> Git & GitHub
-            </div>
-          </div>
-
-          {/* Education */}
-          <p className="mt-6 text-gray-300">
-            🎓 <strong>Education:</strong> BS in Information Technology, Self-Learning Web Development.
-          </p>
+          <a
+            href="#contact"
+            className="rounded-xl border border-gray-400 px-7 py-3 text-lg font-semibold text-white hover:bg-white hover:text-gray-900 transition-all duration-300"
+          >
+            🤝 Let’s Connect
+          </a>
         </div>
       </div>
+
+      {/* Scroll Down Indicator */}
+      <div className="absolute bottom-10 flex justify-center w-full animate-bounce">
+        <a href="#about" className="text-gray-400 hover:text-sky-400 transition">
+          ↓ Scroll Down
+        </a>
+      </div>
+
     </div>
-  </div>
-)}
-        </div>
-    );
+  );
 }
-export default Hero;

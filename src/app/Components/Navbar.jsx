@@ -1,85 +1,114 @@
 "use client";
-
-import React, { useState } from 'react';
-import Image from 'next/image';
+import { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { FiMenu, FiX, FiSun, FiMoon } from "react-icons/fi";
+import { Link } from "react-scroll";
 
 const Navbar = () => {
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const toggleMenu = () => {
-        setIsMenuOpen(!isMenuOpen);
-    };
+    const [isOpen, setIsOpen] = useState(false);
+    const [scrolled, setScrolled] = useState(false);
+    const [darkMode, setDarkMode] = useState(false);
+    const menuRef = useRef(null);
+
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setScrolled(window.scrollY > 50);
+        };
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (menuRef.current && !menuRef.current.contains(event.target)) {
+                setIsOpen(false);
+            }
+        };
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => document.removeEventListener("mousedown", handleClickOutside);
+    }, []);
+
     return (
-        <div className='flex justify-between items-center px-5 py-3 shadow-md'>
-            <a href="#home" className='flex items-center gap-3'>
-                <div className='relative rounded-full w-14 md:w-16 h-14 md:h-16 border-2 border-cyan-300 overflow-hidden'>
-                    <Image
-                        src="/Logo2.jpg"
-                        alt="Waseem Baloch"
-                        fill
-                        priority
-                        className="object-cover"
-                    />
+        <nav
+            className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled ? "bg-black/80 backdrop-blur-lg shadow-md" : "bg-transparent"
+                }`}
+        >
+            <div className="max-w-7xl mx-auto px-6 sm:px-8 py-4 flex justify-between items-center">
+                {/* Logo */}
+                <motion.h1
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5 }}
+                    className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-yellow-400 to-orange-400 text-transparent bg-clip-text"
+                >
+                    MyPortfolio
+                </motion.h1>
+
+                {/* Desktop Menu */}
+                <div className="hidden md:flex space-x-8 text-lg text-gray-300">
+                    {["about", "projects", "skills", "contact"].map((section) => (
+                        <Link
+                            key={section}
+                            to={section}
+                            smooth={true}
+                            duration={500}
+                            spy={true}
+                            activeClass="text-yellow-400"
+                            className="relative cursor-pointer hover:text-yellow-400 transition-all after:block after:h-[2px] after:w-0 after:bg-yellow-400 after:transition-all after:duration-300 hover:after:w-full"
+                        >
+                            {section.charAt(0).toUpperCase() + section.slice(1)}
+                        </Link>
+                    ))}
                 </div>
 
-                <span className=' bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent font-serif text-lg md:text-xl font-semibold '>Waseem Baloch</span>
-            </a>
+                {/* Dark Mode Toggle */}
+                <button
+                    onClick={() => setDarkMode(!darkMode)}
+                    className="hidden md:block text-gray-300 text-xl ml-6 focus:outline-none"
+                >
+                    {darkMode ? <FiSun /> : <FiMoon />}
+                </button>
 
-            <nav>
-                <ul className='hidden md:flex gap-6 font-serif text-base'>
-                    <li>
-                        <a href="#home" className='hover:text-blue-600 hover:underline cursor-pointer text-xl font-serif font-bold bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent'>Home</a>
-                    </li>
-                    <li>
-                        <a href="#projects" className='hover:text-blue-600 hover:underline cursor-pointer text-xl font-serif font-bold bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent'>Projects</a>
-                    </li>
-
-                    <li>
-                        <a href="#services" className='hover:text-blue-600 hover:underline cursor-pointer text-xl font-serif font-bold bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent'>Services</a>
-                    </li>
-                    <li>
-                        <a href="#skills" className='hover:text-blue-600 hover:underline cursor-pointer text-xl font-serif font-bold bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent'>Skills</a>
-                    </li>
-                    <li>
-                        <a href="#contact" className='hover:text-blue-600 hover:underline cursor-pointer text-xl font-serif font-bold bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent'>Contact</a>
-                    </li>
-                </ul>
-            </nav>
-
-            <div className='md:hidden'>
-                <button className='text-2xl focus:outline-none' onClick={toggleMenu} aria-label="Toggle Navigation Menu"> ☰ </button>
+                {/* Mobile Menu Button */}
+                <button
+                    className="md:hidden text-gray-300 text-2xl focus:outline-none"
+                    onClick={() => setIsOpen(!isOpen)}
+                >
+                    {isOpen ? <FiX /> : <FiMenu />}
+                </button>
             </div>
 
-            {isMenuOpen && (
-                <div className='fixed top-0 left-0 w-full h-full bg-black text-white flex flex-col items-center justify-center z-50'>
-
-                    <button
-                        className='absolute top-5 right-5 text-3xl text-white focus:outline-none'
-                        onClick={toggleMenu}
-                        aria-label="Close Navigation Menu"
+            {/* Mobile Menu */}
+            <AnimatePresence>
+                {isOpen && (
+                    <motion.div
+                        ref={menuRef}
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        transition={{ duration: 0.3 }}
+                        className="absolute top-full left-0 w-full bg-black/90 text-gray-300 text-center py-5 space-y-4 shadow-xl"
                     >
-                        ✖
-                    </button>
-
-                    <ul className='flex flex-col gap-6 font-poppins text-xl  text-center'>
-                        <li>
-                            <a href="#home" className='hover:text-gray-400 bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent font-serif cursor-pointer' onClick={toggleMenu}>Home</a>
-                        </li>
-                        <li>
-                            <a href="#projects" className='hover:text-gray-400 bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent font-serif cursor-pointer' onClick={toggleMenu}>Projects</a>
-                        </li>
-                        <li>
-                            <a href="#services" className='hover:text-gray-400 bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent font-serif cursor-pointer' onClick={toggleMenu}>Services</a>
-                        </li>
-                        <li>
-                            <a href="#skills" className='hover:text-gray-400 bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent font-serif cursor-pointer' onClick={toggleMenu}>Skills</a>
-                        </li>
-                        <li>
-                            <a href="#contact" className='hover:text-gray-400 bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent font-serif cursor-pointer' onClick={toggleMenu}>Contact</a>
-                        </li>
-                    </ul>
-                </div>
-            )}
-        </div>
+                        {["about", "projects", "skills", "contact"].map((section) => (
+                            <Link
+                                key={section}
+                                to={section}
+                                smooth={true}
+                                duration={500}
+                                spy={true}
+                                activeClass="text-yellow-400"
+                                className="block py-2 text-lg hover:text-yellow-400 transition cursor-pointer"
+                                onClick={() => setIsOpen(false)}
+                            >
+                                {section.charAt(0).toUpperCase() + section.slice(1)}
+                            </Link>
+                        ))}
+                    </motion.div>
+                )}
+            </AnimatePresence>
+        </nav>
     );
 };
 

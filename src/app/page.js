@@ -7,12 +7,14 @@ import Testimonials from './Components/Testimonials';
 import Contact from './Components/Contact';
 import Footer from './Components/Footer';
 import SkillsSection from './Components/Skills';
+import About from './Components/About';
 
 export default function Home() {
   return (
-      <div className='container mx-auto'>
+      <div >
       
       <HeaderSection />
+      <About/>
       <ProjectsSection />
       <ServicesSection />
       <SkillsSection/>

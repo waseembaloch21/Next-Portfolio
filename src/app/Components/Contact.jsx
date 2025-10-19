@@ -37,11 +37,11 @@ const Contact = () => {
     return (
         <section
             id="contact"
-            className="py-20 px-4 bg-gradient-to-br-black text-white"
+            className="py-20 px-4 bg-gradient-to-br-black text-white font-sans "
         >
             <div className="max-w-xl mx-auto space-y-12">
                 <h2 className="text-4xl font-bold text-center mb-12">
-                    <span className="bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent">
+                    <span className="bg-cyan-500 bg-clip-text text-transparent">
                         Get In Touch
                     </span>
                 </h2>
@@ -99,7 +99,7 @@ const Contact = () => {
 
                     <button
                         type="submit"
-                        className="w-full bg-gradient-to-r from-cyan-400 to-blue-500 py-3 rounded-md font-serif text-black transition duration-300"
+                        className="w-full bg-gradient-to-r from-cyan-400 to-blue-500 py-3 rounded-md font-serif text-black transition duration-300 shadow-lg hover:shadow-cyan-500/50 "
                         data-aos="zoom-out"
                         data-aos-delay="400"
                     >

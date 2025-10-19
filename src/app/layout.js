@@ -22,14 +22,14 @@ export default function RootLayout({ children }) {
   const [showWelcome, setShowWelcome] = useState(true);
 
   useEffect(() => {
-    // Always show the welcome screen on page reload
+    
     setShowWelcome(true);
 
     const timeout = setTimeout(() => {
       setShowWelcome(false);
-    }, 3000); // Adjust timing as needed
+    }, 3000); 
 
-    return () => clearTimeout(timeout); // Cleanup timeout
+    return () => clearTimeout(timeout); 
   }, []);
 
   return (
