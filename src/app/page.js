@@ -1,6 +1,5 @@
 import React from 'react';
 import { FaWhatsapp } from 'react-icons/fa';
-import HeaderSection from './Components/HeaderSection';
 import ProjectsSection from './Components/ProjectsSection';
 import ServicesSection from './Components/ServicesSection';
 import Testimonials from './Components/Testimonials';
@@ -8,12 +7,14 @@ import Contact from './Components/Contact';
 import Footer from './Components/Footer';
 import SkillsSection from './Components/Skills';
 import About from './Components/About';
+import Navbar from './Components/Navbar';
+import Hero from './Components/Hero';
 
 export default function Home() {
   return (
       <div >
-      
-      <HeaderSection />
+      <Navbar/>
+      <Hero/>
       <About/>
       <ProjectsSection />
       <ServicesSection />

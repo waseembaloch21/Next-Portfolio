@@ -37,7 +37,7 @@ const Contact = () => {
     return (
         <section
             id="contact"
-            className="py-20 px-4 bg-gradient-to-br-black text-white font-sans "
+            className="py-20 px-4 bg-black text-white font-sans "
         >
             <div className="max-w-xl mx-auto space-y-12">
                 <h2 className="text-4xl font-bold text-center mb-12">

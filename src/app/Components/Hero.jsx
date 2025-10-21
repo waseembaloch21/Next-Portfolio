@@ -39,12 +39,12 @@ export default function Hero() {
       {/* Hero Content */}
       <div className="relative z-10 px-6 text-center max-w-4xl" data-aos="fade-up">
         <h1
-          className="mt-6 text-5xl text-white sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-tight"
+          className="mt-6 text-5xl text-white sm:text-6xl lg:text-8xl font-extrabold tracking-tight leading-tight"
           data-aos="fade-down"
         >
           Hi, I'm{" "}
           <span className="bg-gradient-to-r from-sky-400 via-indigo-400 to-pink-500 bg-clip-text text-transparent drop-shadow-lg">
-            Waseem Baloch
+              Waseem Baloch
           </span>
         </h1>
 
