@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import WelcomeScreen from "./Components/welcomeScreen";
+import { ThemeProvider } from "./context/ThemeContextProvider";
 
 
 const geistSans = Geist({
@@ -35,7 +36,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <ThemeProvider>
         {showWelcome ? <WelcomeScreen  setShowWelcome={setShowWelcome} /> : children}
+        </ThemeProvider>
       </body>
     </html>
   );

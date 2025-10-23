@@ -3,11 +3,12 @@ import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FiMenu, FiX, FiSun, FiMoon } from "react-icons/fi";
 import { Link } from "react-scroll";
+import { useTheme } from "../context/ThemeContextProvider";
 
 const Navbar = () => {
+    const { theme, toggleTheme } = useTheme();
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
-    const [darkMode, setDarkMode] = useState(false);
     const menuRef = useRef(null);
 
 
@@ -64,12 +65,18 @@ const Navbar = () => {
                 </div>
 
                 {/* Dark Mode Toggle */}
-                <button
-                    onClick={() => setDarkMode(!darkMode)}
-                    className="hidden md:block text-gray-300 text-xl ml-6 focus:outline-none"
-                >
-                    {darkMode ? <FiSun /> : <FiMoon />}
-                </button>
+                <motion.button
+              onClick={toggleTheme}
+              className="hidden md:block text-gray-300 text-xl ml-6 focus:outline-none"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+            >
+              {theme === 'dark' ? (
+                <FiSun className="h-5 w-5" />
+              ) : (
+                <FiMoon className="h-5 w-5" />
+              )}
+            </motion.button>
 
                 {/* Mobile Menu Button */}
                 <button
