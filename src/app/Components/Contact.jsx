@@ -1,37 +1,46 @@
 "use client";
 
-import { useState } from "react";
-import { FaUserAlt, FaEnvelope, FaSpinner, FaPaperPlane } from 'react-icons/fa';
+import { useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
 
-const Contact = () => {
-    const [formData, setFormData] = useState({ name: '', email: '', message: '' });
-    const [status, setStatus] = useState('');
+export default function Contact() {
+    const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+    const [status, setStatus] = useState(null);
+    const formRef = useRef(null);
+    const buttonRef = useRef(null);
+    
     const handleChange = (e) => {
-        setFormData((prev) => ({
-            ...prev,
-            [e.target.id]: e.target.value,
-        }));
+        setFormData({ ...formData, [e.target.name]: e.target.value });
     };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setStatus('Sending...');
-        try {
-            const response = await fetch('/api/send', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(formData),
-            });
-            const result = await response.json();
 
-            if (result.success) {
-                setStatus('✅ Message sent successfully!');
-                setFormData({ name: '', email: '', message: '' });
-            } else {
-                setStatus(`❌ Failed to send: ${result.error}`);
-            }
-        } catch (err) {
-            setStatus(`❌ Error: ${err.message}`);
+        if (!formData.name || !formData.email || !formData.message) {
+            setStatus("❌ Please fill in all fields.");
+            return;
         }
+
+        try {
+            const response = await emailjs.sendForm(
+                process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID, // ✅ Correct variable
+                process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID, // ✅ Correct variable
+                formRef.current, // ✅ Form reference
+                process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY // ✅ Correct public key
+            );
+
+            if (response.status === 200) {
+                setStatus("✅ Message sent successfully!");
+                setFormData({ name: "", email: "", message: "" });
+            } else {
+                setStatus("❌ Failed to send message. Please try again.");
+            }
+        } catch (error) {
+            console.error("EmailJS Error:", error);
+            setStatus("❌ Failed to send message. Please try again.");
+        }
+
+        setTimeout(() => setStatus(null), 3000);
     };
 
     return (
@@ -47,6 +56,7 @@ const Contact = () => {
                 </h2>
 
                 <form
+                 ref={formRef}
                     onSubmit={handleSubmit}
                     className="bg-gray-800 p-8 rounded-xl shadow-xl space-y-6"
                     data-aos="fade-up"
@@ -57,8 +67,8 @@ const Contact = () => {
                             Name
                         </label>
                         <input
-                            type="text"
-                            id="name"
+                             type="text"
+                            name="name"
                             value={formData.name}
                             onChange={handleChange}
                             className="w-full px-4 py-3 bg-[#0f1e24] border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-cyan-100 text-white"
@@ -72,8 +82,8 @@ const Contact = () => {
                             Email
                         </label>
                         <input
-                            type="email"
-                            id="email"
+                             type="email"
+                            name="email"
                             value={formData.email}
                             onChange={handleChange}
                             className="w-full px-4 py-3 bg-[#0f1e24] border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-cyan-100 text-white"
@@ -87,7 +97,7 @@ const Contact = () => {
                             Message
                         </label>
                         <textarea
-                            id="message"
+                            name="message"
                             rows={4}
                             value={formData.message}
                             onChange={handleChange}
@@ -98,7 +108,7 @@ const Contact = () => {
                     </div>
 
                     <button
-                        type="submit"
+                       ref={buttonRef}
                         className="w-full bg-gradient-to-r from-cyan-400 to-blue-500 py-3 rounded-md font-serif text-black transition duration-300 shadow-lg hover:shadow-cyan-500/50 "
                         data-aos="zoom-out"
                         data-aos-delay="400"
@@ -113,4 +123,3 @@ const Contact = () => {
     );
 };
 
-export default Contact;

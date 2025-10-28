@@ -35,7 +35,7 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body className={`bg-white transition-colors dark:bg-gray-900 dark:text-white ${geistSans.variable} ${geistMono.variable} antialiased`}>
         <ThemeProvider>
         {showWelcome ? <WelcomeScreen  setShowWelcome={setShowWelcome} /> : children}
         </ThemeProvider>
