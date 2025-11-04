@@ -73,7 +73,7 @@ export default function Hero() {
           data-aos-delay="600"
         >
           <a
-            href="Waseem Baloch resume.pdf"
+            href="Waseem-resume.pdf"
             download
             className="rounded-xl bg-gradient-to-r from-sky-500 to-indigo-500 px-7 py-3 text-lg font-semibold text-white shadow-lg hover:shadow-sky-500/50 hover:scale-105 transition-all duration-300"
           >
