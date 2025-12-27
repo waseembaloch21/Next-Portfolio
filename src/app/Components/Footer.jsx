@@ -14,7 +14,7 @@ const Footer = () => {
               Waseem Baloch
             </h2>
             <p className="text-gray-400 font-serif leading-relaxed">
-              I am a passionate Front-End Developer specialized in creating
+              I am a passionate Full-Stack Developer specialized in creating
               responsive and user-friendly web interfaces.
             </p>
           </div>

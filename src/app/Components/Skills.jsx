@@ -5,7 +5,7 @@ import gsap from "gsap";
 import { FaReact, FaNodeJs, FaDatabase, FaHtml5, FaCss3Alt, FaJs } from "react-icons/fa";
 import { MdClose } from "react-icons/md";
 import AOS from "aos";
-import "aos/dist/aos.css"; // Import AOS styles
+import "aos/dist/aos.css"; 
 
 const skills = [
   {
@@ -82,7 +82,7 @@ export default function SkillsSection() {
   return (
     <section id="skills" className="py-20 bg-[#0d0d0d] text-white text-center">
       <h2
-        className="text-6xl font-extrabold mb-12 bg-gradient-to-r from-teal-400 via-sky-500 to-blue-500 bg-clip-text text-transparent"
+        className="text-6xl font-extrabold mb-12 py-3 bg-gradient-to-r from-teal-400 via-sky-500 to-blue-500 bg-clip-text text-transparent"
         data-aos="fade-down"
       >
         My Skills
@@ -94,7 +94,7 @@ export default function SkillsSection() {
             key={index}
             data-aos="fade-up"
             data-aos-delay={index * 100}
-            className="flex flex-col items-center bg-[#1a1a1a] p-6 rounded-2xl shadow-lg border border-gray-700 transform transition-transform duration-500 hover:scale-110 hover:shadow-xl cursor-pointer"
+            className="flex flex-col items-center bg-[#1a1a1a] p-6 rounded-2xl shadow-lg border border-gray-700 transform transition-transform duration-500 hover:scale-150 hover:shadow-xl cursor-pointer"
             onClick={() => setSelectedSkill(skill)}
           >
             {skill.icon}

@@ -36,7 +36,7 @@ const ServicesSection = () => {
       id="services"
       className="bg-black text-gray-100 py-16 px-6 sm:px-12 lg:px-24 font-sans"
     >
-      <h2 className="relative text-5xl md:text-6xl font-extrabold mb-16 text-center tracking-tight 
+      <h2 className="relative text-5xl md:text-6xl font-extrabold mb-16 py-3 text-center tracking-tight 
           bg-gradient-to-r from-teal-400 via-sky-500 to-blue-500 bg-clip-text text-transparent"
         data-aos="fade-down">
         My Services
